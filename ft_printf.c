@@ -103,6 +103,10 @@ int main()
     printf("%d\n", i);
     printf("%d\n", original);
 
+    i = printf("NULL %s NULL \n", NULL); //　←　エラーが起きる部分
+    original = ft_printf("%% %%\n");
+    printf("%d\n", i);
+    printf("%d\n", original);
 
     ft_printf("Hello %s! This is a number: %d and a char: %c\n", "World", 42, 'A');
     return 0;
