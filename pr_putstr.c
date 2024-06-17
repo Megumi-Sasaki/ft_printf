@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   pr_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mesasaki <mesasaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 19:49:42 by mesasaki          #+#    #+#             */
-/*   Updated: 2024/06/17 21:25:30 by mesasaki         ###   ########.fr       */
+/*   Created: 2024/06/17 21:32:10 by mesasaki          #+#    #+#             */
+/*   Updated: 2024/06/18 03:49:25 by mesasaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+int	pr_putstr(const char *s)
 {
-	size_t	length;
-
-	length = 0;
-	while (str[length] != '\0')
-	{
-		length++;
-	}
-	return (length);
+	if (!s)
+		return (write(1, "(null)", 6));
+	return (ft_putstr_fd(s));
 }

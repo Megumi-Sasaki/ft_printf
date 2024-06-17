@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pr_ft_putnbr.c                                     :+:      :+:    :+:   */
+/*   pr_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mesasaki <mesasaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:29:40 by mesasaki          #+#    #+#             */
-/*   Updated: 2024/06/17 21:33:43 by mesasaki         ###   ########.fr       */
+/*   Updated: 2024/06/18 04:01:10 by mesasaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	pr_put_unsigned(unsigned int n)
 	count = 0;
 	if (n >= 10)
 		count += pr_put_unsigned(n / 10);
-	count += pr_ft_char((n % 10) + '0');
+	count += pr_putchar((n % 10) + '0');
 	return (count);
 }
 
-int	pr_ft_putnbr(int n)
+int	pr_putnbr(int n)
 {
 	int	count;
 
@@ -32,7 +32,7 @@ int	pr_ft_putnbr(int n)
 		count += pr_put_unsigned((unsigned int)n);
 	if (n < 0)
 	{
-		count += pr_ft_char('-') + pr_put_unsigned((unsigned int)-n);
+		count += pr_putchar('-') + pr_put_unsigned((unsigned int)-n);
 	}
 	return (count);
 }
