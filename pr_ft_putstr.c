@@ -1,12 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pr_ft_putstr.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mesasaki <mesasaki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/17 21:32:10 by mesasaki          #+#    #+#             */
+/*   Updated: 2024/06/17 21:40:57 by mesasaki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int pr_ft_putstr(const char *s)
+int	pr_ft_putstr(const char *s)
 {
-    if(!s)
-    {
-        write(1, "NULL", 4);
-        return (4);
-    }
-    ft_putstr_fd(s);
-    return ((int)ft_strlen(s));
+	if (!s)
+		return (write(1, "(null)", 6));
+	return (ft_putstr_fd(s));
 }
