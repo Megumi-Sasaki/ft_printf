@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mesasaki <mesasaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 19:36:18 by mesasaki          #+#    #+#             */
-/*   Updated: 2024/06/17 21:42:10 by mesasaki         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:31:41 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr_fd(const char *s)
+int	ft_putstr_fd(const char *s, size_t count)
 {
 	size_t	i;
 
@@ -21,7 +21,9 @@ int	ft_putstr_fd(const char *s)
 		return (0);
 	while (s[i] != '\0')
 	{
-		write(1, &s[i], 1);
+		count = write(1, &s[i], 1);
+		if (count == -1)
+			return (-1);
 		i++;
 	}
 	return ((int)i);

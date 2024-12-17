@@ -3,27 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mesasaki <mesasaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:31:26 by mesasaki          #+#    #+#             */
-/*   Updated: 2024/12/14 14:36:49 by mesasaki         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:52:35 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int	support_printf(const char *format, va_list args)
+int	support_printf(const char *format, va_list args, size_t count)
 {
-	int	count;
-
-	count = 0;
 	if (*format == 'c')
-		count += pr_putchar(va_arg(args, int));
+		count += pr_putchar(va_arg(args, int), count);
 	else if (*format == 'd' || *format == 'i')
 		count += pr_putnbr(va_arg(args, int));
 	else if (*format == 's')
-		count += pr_putstr(va_arg(args, char *));
+		count += pr_putstr(va_arg(args, char *), count);
 	else if (*format == 'u' || *format == 'X' || *format == 'x')
 		count += pr_unsbase(va_arg(args, unsigned int), format);
 	else if (*format == 'p')
@@ -32,7 +29,8 @@ int	support_printf(const char *format, va_list args)
 	}
 	else
 	{
-		count += pr_putchar(*format);
+		count += pr_putchar('%');
+		count += pr_putchar(*format, count);
 	}
 	return (count);
 }
@@ -49,11 +47,11 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			count += support_printf(format, args);
+			count += support_printf(format, args, count);
 		}
 		else
 		{
-			count += pr_putchar(*format);
+			count += pr_putchar(*format, count);
 		}
 		format++;
 	}
