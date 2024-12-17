@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:31:26 by mesasaki          #+#    #+#             */
-/*   Updated: 2024/12/17 15:37:24 by ttsubo           ###   ########.fr       */
+/*   Updated: 2024/12/17 15:52:35 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	support_printf(const char *format, va_list args, size_t count)
 	else if (*format == 's')
 		count += pr_putstr(va_arg(args, char *), count);
 	else if (*format == 'u' || *format == 'X' || *format == 'x')
-		count += pr_unsbase(va_arg(args, unsigned int), *format);
+		count += pr_unsbase(va_arg(args, unsigned int), format);
 	else if (*format == 'p')
 	{
 		count += pr_putpointer(va_arg(args, uintptr_t));
