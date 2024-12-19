@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mesasaki <mesasaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jean <jean@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:32:49 by mesasaki          #+#    #+#             */
-/*   Updated: 2024/06/18 04:07:16 by mesasaki         ###   ########.fr       */
+/*   Updated: 2024/12/19 22:28:30 by jean             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 int	ft_printf(const char *format, ...);
 int	support_printf(const char *format, va_list args);
+char	*ft_strchr(const char *s, int c);
 int	pr_putchar(char c);
 int	pr_putnbr(int n);
 int	pr_putstr(const char *s);
